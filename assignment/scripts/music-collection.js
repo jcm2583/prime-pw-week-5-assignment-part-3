@@ -48,3 +48,16 @@ addToCollection('Nevermind', 'Nirvana', '1991');
 findByArtist('Nirvana');
 
 // Stretch goals
+
+function search (object) {
+  let allResults = [];
+  for (let i=0; i<collection.length; i++) {
+    if (collection[i].title == object.title && collection[i].artist == object.artist && collection[i].yearPublished == object.yearPublished) {
+    allResults.push(collection[i]);
+    return allResults;
+    }
+  }
+}
+
+let oldAlbum = {title: 'big fish', artist: 'little fish', yearPublished: '1989'};
+console.log(search(oldAlbum));
