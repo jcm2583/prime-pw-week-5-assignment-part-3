@@ -3,26 +3,27 @@ console.log('***** Music Collection *****')
 let collection = [];
 // Creating a function to music albums into the collection array
 function addToCollection (title, artist, yearPublished) {
-  let newAlbum = {title, artist, yearPublished, };
+  let newAlbum = {title: title, artist: artist, yearPublished: yearPublished};
   collection.push(newAlbum);
   return newAlbum;
 }
 
 // Adding albums to the collection array
-console.log(addToCollection('MTV Unplugged in New York', 'Nirvana', '1994'));
-console.log(addToCollection('Blink-182', 'Blink-182', '2003' ));
-console.log(addToCollection('Kids in Love', 'Kygo', '2017'));
-console.log(addToCollection('Folklore', 'Taylor Swift', '2020'));
-console.log(addToCollection('Boston', 'Boston', '1976'));
-console.log(addToCollection('Zaba', 'Glass Animals', '2014'));
+console.log(addToCollection('MTV Unplugged in New York', 'Nirvana', 1994,));
+console.log(addToCollection('Blink-182', 'Blink-182', 2003 ));
+console.log(addToCollection('Kids in Love', 'Kygo', 2017));
+console.log(addToCollection('Folklore', 'Taylor Swift', 2020));
+console.log(addToCollection('Boston', 'Boston', 1976));
+console.log(addToCollection('Zaba', 'Glass Animals', 2014));
 // Testing that everything was added into the collection array
 console.log(collection);
+
 
 // Creating a function to show each album in the collection
 function showCollection (array) {
   console.log('The length of the array is', array.length);
   for (let i=0; i<array.length; i++) {
-  console.log(array[i].title, 'by', array[i].artist, 'published in', array[i].yearPublished);
+  console.log(`${array[i].title} by ${array[i].artist} published in, ${array[i].yearPublished}`);
   }
 }
 // Testing the showCollection function
@@ -52,12 +53,15 @@ findByArtist('Nirvana');
 function search (object) {
   let allResults = [];
   for (let i=0; i<collection.length; i++) {
-    if (collection[i].title == object.title && collection[i].artist == object.artist && collection[i].yearPublished == object.yearPublished) {
-    allResults.push(collection[i]);
+    if (object.title == collection[i].title && object.artist == collection[i].artist && object.yearPublished == collection[i].yearPublished) {
+    allResults.push(object);
     return allResults;
+    }
+    else if (object.title !== collection[i].title || object.artist !== collection[i].artist || object.yearPublished !== collection[i].yearPublished) {
+    return allResults;
+    }
+    else {
+    return collection;
     }
   }
 }
-
-let oldAlbum = {title: 'big fish', artist: 'little fish', yearPublished: '1989'};
-console.log(search(oldAlbum));
